@@ -1,0 +1,65 @@
+\documentclass[11pt,a4j]{jreport}
+
+\renewcommand{\bibname}{参考文献}
+\usepackage[dvipdfmx]{graphicx}
+\usepackage{times}
+\usepackage{latexsym}
+\usepackage{fancyhdr}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{tikz}
+\usepackage[ipaex]{pxchfon}
+\usepackage{algorithm}
+\usepackage[colorlinks=false]{hyperref}
+\usepackage[noend]{algpseudocode}
+\usetikzlibrary{fit,positioning}
+\newcommand{\argmax}{\mathop{\rm argmax}\limits}
+\newcommand{\argmin}{\mathop{\rm argmin}\limits}
+
+\begin{document}
+
+% 既に上下左右に１インチの余白がある
+\setlength{\baselineskip}{18pt}
+\setlength{\oddsidemargin}{5.6mm}  % 奇数ページ左余白
+\setlength{\evensidemargin}{5.6mm} % 偶数ページ左余白
+\setlength{\headheight}{0mm}       % ヘッダないからヘッダ領域の高さを0
+\setlength{\headsep}{0mm}          % ヘッダないからヘッダ領域と本文領域との距離を0
+\setlength{\textheight}{223mm} % 本文領域の高さ
+\setlength{\footskip}{25mm}    % 本文領域とヘッダ領域（ページ番号など）との距離
+
+% 表紙を印刷するときだけ
+\newpage
+\input{binding.tex}    % 綴じ込むファイルの表紙
+% 表紙を印刷するときだけ、ここまで
+
+\newpage
+\input{title.tex}      % 標題紙
+\newpage
+\clearpage             % ページ番号のリセット
+\pagenumbering{roman}  % ページ番号をローマ数字に変更
+\tableofcontents       % 目次
+% \listoftables          % 表目次：必要があれば
+% \listoffigures         % 図目次：必要があれば
+
+
+\clearpage                  % ページ番号のリセット
+\pagenumbering{arabic}      % ページ番号をアラビア数字に変更
+
+% \input{context.tex} % 中身
+\chapter{はじめに}
+\section{ほげほげ}
+あばば \cite{key}
+
+\chapter*{謝辞}
+\addcontentsline{toc}{chapter}{謝辞}
+圧倒的感謝．
+\newpage
+
+% ★本文(おわり)
+
+% ▲参考文献(はじめ)
+\addcontentsline{toc}{chapter}{参考文献}    %「chapter」扱いで文字列「参考文献」を目次に加える
+\bibliographystyle{unsrt}
+\bibliography{reference}
+
+\end{document}
